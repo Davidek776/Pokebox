@@ -14,7 +14,6 @@ export default function MainPage() {
     fetch(currentPageUrl)
       .then((response) => {
         if (response.ok) {
-          // console.log(response.data.results);
           return response.json();
         }
         throw new Error("Network response was not OK");
@@ -22,14 +21,12 @@ export default function MainPage() {
       .then((pokemons) => {
         setNextPageUrl(pokemons.next);
         setPrevPageUrl(pokemons.previous);
-        console.log(pokemons.next);
         setState(pokemons.results);
       })
       .catch((err) => console.log("a" + err));
   }, [currentPageUrl]);
 
   function goToNextPage() {
-    console.log(nextPageUrl);
     setCurrentPageUrl(nextPageUrl);
   }
 
